@@ -1,6 +1,8 @@
 /*
 	Research and Test Module for Internal Communication (RaTMfIC)
 	Modulo de Pesquisa e Teste para Comunicacao interna (MdPTpCI)
+	Devs: Bombbom
+	recive and send: NULL
 */
 //AnalogIN
 #define VECTORINVERSION A0
@@ -50,11 +52,9 @@ void loop() {
 	analogWrite(Rvel, Acelerometer(aceleration));
 	analogWrite(Lvel, Acelerometer(aceleration));
 }
-/*					    --->
-	Acceleration vector: a m/s²
-//							--->
------------------------------V code-----------------------------------------//
-*/
+
+//---------------------------V code-----------------------------------------//
+
 int Acelerometer(int aceleration) {
 	aceleration=map(aceleration, 0, 1023, 0, 180);
 //	Serial.println(aceleration);
@@ -62,8 +62,7 @@ int Acelerometer(int aceleration) {
 }
 bool key=1;
 void VectorRectilinearInversion(int VectorValue, int aceleration) {
-	
-	/*							-->	
+	/*
 	vectorValue is direction the V
 	key is a key to block motor
 	*/
@@ -99,10 +98,7 @@ void VectorRectilinearInversion(int VectorValue, int aceleration) {
 			Serial.println(key);
 		};
 	}
-/*	else if(NULL) {
-		movment equal to 0; rotation
-	}
-*/	else {
+	else {
 		//error escape
 		Serial.print("[VV-1] VectorValue and vetordirection ERROR\nVector value = ");
 		Serial.println(VectorValue);
